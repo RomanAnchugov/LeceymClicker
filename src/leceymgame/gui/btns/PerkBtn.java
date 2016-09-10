@@ -7,6 +7,7 @@ package leceymgame.gui.btns;
 
 import java.awt.Image;
 import leceymgame.services.Btn;
+import static leceymgame.services.GameStats.GAME_STATE;
 
 /**
  *
@@ -21,6 +22,11 @@ public class PerkBtn extends Btn{
     @Override
     public void click() {
         super.click();
+        if(GAME_STATE == 3){
+            GAME_STATE = 2;
+        }else{
+            GAME_STATE = 3;
+        }
     }
     
     

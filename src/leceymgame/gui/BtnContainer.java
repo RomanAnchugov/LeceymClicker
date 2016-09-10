@@ -25,7 +25,7 @@ public class BtnContainer implements Renderer{
     private int posX, posY;
     private int margin;
     
-    public BtnContainer(Btn[] btns,int posX, int posY,int width, Image bgImage){
+    public BtnContainer(Btn[] btns,int posX, int posY, Image bgImage){
         this.btns = btns;              
         this.bgImage = bgImage;        
         margin = 10;

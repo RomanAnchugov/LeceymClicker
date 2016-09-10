@@ -50,7 +50,9 @@ public class Game extends Canvas implements Runnable{
     private Quantity quantity;//текущее кол-во учеников
     private MenuBtn menuBtn;//кнопка для меню
     private PerkBtn perkBtn;//кнопка для перков
-    private BtnContainer menuContainer;
+    private BtnContainer menuContainer;//контейнер для кнопок меню
+    private BtnContainer perkContainerB1;//контейнер для кнопок перков, блок 1
+    private BtnContainer perkContainerB2;//контейнер для кнопок перков, блок 1
        
     public void start(){        
         running = true;
@@ -79,18 +81,38 @@ public class Game extends Canvas implements Runnable{
         menuBtn = new MenuBtn(Game.WIDTH - 69, Game.HEIGHT - 69, 64, 64, new ImageIcon("assets/menuBtn.png").getImage());//posX, posY, width, height, img
         perkBtn = new PerkBtn(5, Game.HEIGHT - 69, 64, 64, new ImageIcon("assets/perkBtn.png").getImage());//posX, posY, width, height, img        
         
-        Btn test1 = new Btn(5, Game.HEIGHT - 64, 64, 64);
-        Btn test2 = new Btn(5, Game.HEIGHT - 64, 64, 64);
-        Btn test3 = new Btn(5, Game.HEIGHT - 64, 64, 64);
+        Btn test1 = new Btn(5, Game.HEIGHT - 64, 64, 64);//помощ
+        Btn test2 = new Btn(5, Game.HEIGHT - 64, 64, 64);//сохранить
+        Btn test3 = new Btn(5, Game.HEIGHT - 64, 64, 64);//выход
         
         
         Btn[] btns = {test1, test2, test3};        
-        menuContainer = new BtnContainer(btns, WIDTH / 2 - 50, 100, 100, null);//Btn btns[], posX, posY, width, bgimage
+        menuContainer = new BtnContainer(btns, WIDTH / 2 - 50, 100, null);//Btn btns[], posX, posY, width, bgimage        
+        
+        Btn test4 = new Btn(5, Game.HEIGHT - 64, 64, 64);//перк1б1
+        Btn test5 = new Btn(5, Game.HEIGHT - 64, 64, 64);//перк2б1
+        Btn test6 = new Btn(5, Game.HEIGHT - 64, 64, 64);//перк3б1
+        Btn test7 = new Btn(5, Game.HEIGHT - 64, 64, 64);//перк4б1        
+        Btn[] btnsPerkB1 = {test4, test5, test6, test7};
+        
+        Btn test8 = new Btn(5, Game.HEIGHT - 64, 64, 64);//перк1б2
+        Btn test9 = new Btn(5, Game.HEIGHT - 64, 64, 64);//перк2б2
+        Btn test10 = new Btn(5, Game.HEIGHT - 64, 64, 64);//перк3б2
+        Btn[] btnsPerkB2 = {test8, test9, test10};
+        
+        perkContainerB1 = new BtnContainer(btnsPerkB1, WIDTH / 2 - 84, 68, null);
+        perkContainerB2 = new BtnContainer(btnsPerkB2, WIDTH / 2 - 10, 110, null);
         
         addMouseListener(clickBtn);
         addMouseListener(menuBtn);
         addMouseListener(perkBtn);
         for(Btn btn : btns){
+            addMouseListener(btn);
+        }
+        for(Btn btn : btnsPerkB1){
+            addMouseListener(btn);
+        }
+        for(Btn btn : btnsPerkB2){
             addMouseListener(btn);
         }
     }
@@ -117,6 +139,10 @@ public class Game extends Canvas implements Runnable{
         if(GAME_STATE == 1){
             menuContainer.draw(g);
         }
+        if(GAME_STATE == 3){
+            perkContainerB1.draw(g);
+            perkContainerB2.draw(g);
+        }
         
         //
 	g.dispose();
@@ -132,6 +158,8 @@ public class Game extends Canvas implements Runnable{
         perkBtn.update();  
         
         menuContainer.update();
+        perkContainerB1.update();
+        perkContainerB2.update();
     }
     
     public static void main(String[] args) { 
