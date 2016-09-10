@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mathgame.gui;
+package leceymgame.gui.btns;
 
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
-import mathgame.Btn;
-import mathgame.Game;
-import mathgame.GameStats;
-import mathgame.Renderer;
+import leceymgame.services.Btn;
+import leceymgame.main.Game;
+import leceymgame.services.GameStats;
+import leceymgame.services.Renderer;
 
 /**
  *
@@ -24,16 +24,12 @@ public class ClickBtn extends Btn{
     public ClickBtn(int posX, int posY, int width, int height, Image img) {
         super(posX, posY, width, height, img);
     }
-        
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-        super.mouseClicked(e);
-        if(checkClick(e)){
-            System.out.println("mathgame.gui.ClickBtn.mouseClicked()");
+    public void click() {
+        super.click(); 
+        if(GameStats.CAPACITY >= GameStats.CLICK_UP + GameStats.QUANTITY){
+            GameStats.QUANTITY += GameStats.CLICK_UP;                  
         }
-    }
-    
-    
-    
+    }                                        
 }

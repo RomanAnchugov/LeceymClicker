@@ -3,17 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mathgame.gui;
+package leceymgame.gui.btns;
 
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
-import mathgame.Btn;
-import mathgame.Game;
-import mathgame.GameStats;
-import mathgame.Renderer;
+import leceymgame.services.Btn;
+import leceymgame.main.Game;
+import leceymgame.services.GameStats;
+import static leceymgame.services.GameStats.GAME_STATE;
+import leceymgame.services.Renderer;
 
 /**
  *
@@ -24,12 +25,16 @@ public class MenuBtn extends Btn {//кнопка меню, внизу справ
     public MenuBtn(int posX, int posY, int width, int height, Image img) {
         super(posX, posY, width, height, img);
     }
-    
+
     @Override
-    public void mouseClicked(MouseEvent e) {
-        super.mouseClicked(e);
-        if(checkClick(e)){
-            System.out.println("mathgame.gui.MenuBtn.mouseClicked()");
+    public void click() {
+        super.click();
+        if(GAME_STATE == 1){
+            GAME_STATE = 2;
+        }else{
+            GAME_STATE = 1;
         }
-    }            
+    }
+    
+    
 }

@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mathgame.gui;
+package leceymgame.gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import mathgame.Game;
-import mathgame.GameStats;
-import mathgame.Renderer;
+import leceymgame.main.Game;
+import leceymgame.services.GameStats;
+import leceymgame.services.Renderer;
 
 /**
  *

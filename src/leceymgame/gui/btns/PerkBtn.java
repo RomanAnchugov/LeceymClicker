@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mathgame.gui;
+package leceymgame.gui.btns;
 
 import java.awt.Image;
-import mathgame.Btn;
+import leceymgame.services.Btn;
 
 /**
  *
@@ -17,5 +17,12 @@ public class PerkBtn extends Btn{
     public PerkBtn(int posX, int posY, int width, int height, Image img) {
         super(posX, posY, width, height, img);
     }
+
+    @Override
+    public void click() {
+        super.click();
+    }
+    
+    
     
 }

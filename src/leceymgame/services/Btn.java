@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mathgame;
+package leceymgame.services;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -25,13 +25,23 @@ private Image img;
         this.width = width;
         this.height = height;
         this.posX = posX ;
-        this.posY = posY;
-        
+        this.posY = posY;        
+    }
+    public Btn(int posX, int posY,int width, int height){
+        this.img = null;
+        this.width = width;
+        this.height = height;
+        this.posX = posX ;
+        this.posY = posY;        
     }
 
     @Override
     public void draw(Graphics g) {
-        g.drawImage(img, posX, posY, width, height,null);
+        if(img != null){
+            g.drawImage(img, posX, posY, width, height,null);
+        }else{
+            g.drawRect(posX, posY, width, height);
+        }
     }
 
     @Override
@@ -42,10 +52,13 @@ private Image img;
     @Override
     public void mouseClicked(MouseEvent e) {
         if(checkClick(e)){        
-            if(GameStats.CAPACITY >= GameStats.CLICK_UP + GameStats.QUANTITY){
-                GameStats.QUANTITY += GameStats.CLICK_UP;                  
-            }
+            click();
         }
+    }
+    
+     
+    public void click() {
+        System.err.println("Click");
     }
     
     public boolean checkClick(MouseEvent e){
@@ -70,7 +83,5 @@ private Image img;
 
     public int getHeight() {
         return height;
-    }
-        
-    
+    }              
 }

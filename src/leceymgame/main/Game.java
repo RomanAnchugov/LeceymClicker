@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mathgame;
+package leceymgame.main;
 
-import mathgame.gui.Sprite;
-import mathgame.gui.ClickBtn;
+import leceymgame.gui.btns.ClickBtn;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -25,11 +24,13 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import mathgame.gui.BtnContainer;
-import mathgame.gui.Capacity;
-import mathgame.gui.MenuBtn;
-import mathgame.gui.PerkBtn;
-import mathgame.gui.Quantity;
+import leceymgame.gui.BtnContainer;
+import leceymgame.gui.Capacity;
+import leceymgame.gui.btns.MenuBtn;
+import leceymgame.gui.btns.PerkBtn;
+import leceymgame.gui.Quantity;
+import leceymgame.services.Btn;
+import static leceymgame.services.GameStats.GAME_STATE;
 
 /**
  *
@@ -41,9 +42,7 @@ public class Game extends Canvas implements Runnable{
     
     public static int WIDTH = 700;
     public static int HEIGHT = 500;
-    public static String TITLE = "It WORKS!"; 
-    
-    private Sprite spr;
+    public static String TITLE = "It WORKS!";         
     
     //gui
     private ClickBtn clickBtn;//главна клик кнопка
@@ -51,7 +50,7 @@ public class Game extends Canvas implements Runnable{
     private Quantity quantity;//текущее кол-во учеников
     private MenuBtn menuBtn;//кнопка для меню
     private PerkBtn perkBtn;//кнопка для перков
-    private BtnContainer btnContainer;
+    private BtnContainer menuContainer;
        
     public void start(){        
         running = true;
@@ -72,21 +71,28 @@ public class Game extends Canvas implements Runnable{
         }
     }
     
-    public void init(){        
-        spr = new Sprite(new ImageIcon("assets/1.png").getImage());        
-        clickBtn = new ClickBtn(Game.WIDTH / 2 - 100, Game.HEIGHT - 100, 200, 100, new ImageIcon("assets/clickBtn.png").getImage());//posX, posY, width, height, img
+    public void init(){                        
         capacity = new Capacity(5, 15);//posX, posY
-        quantity = new Quantity(32, 64);//width, height        
-        menuBtn = new MenuBtn(Game.WIDTH - 69, Game.HEIGHT - 64, 64, 64, new ImageIcon("assets/menuBtn.png").getImage());//posX, posY, width, height, img
-        perkBtn = new PerkBtn(5, Game.HEIGHT - 64, 64, 64, new ImageIcon("assets/perkBtn.png").getImage());//posX, posY, width, height, img        
+        quantity = new Quantity(32, 64);//width, height   
+        
+        clickBtn = new ClickBtn(Game.WIDTH / 2 - 100, Game.HEIGHT - 105, 200, 100, new ImageIcon("assets/clickBtn.png").getImage());//posX, posY, width, height, img             
+        menuBtn = new MenuBtn(Game.WIDTH - 69, Game.HEIGHT - 69, 64, 64, new ImageIcon("assets/menuBtn.png").getImage());//posX, posY, width, height, img
+        perkBtn = new PerkBtn(5, Game.HEIGHT - 69, 64, 64, new ImageIcon("assets/perkBtn.png").getImage());//posX, posY, width, height, img        
+        
+        Btn test1 = new Btn(5, Game.HEIGHT - 64, 64, 64);
+        Btn test2 = new Btn(5, Game.HEIGHT - 64, 64, 64);
+        Btn test3 = new Btn(5, Game.HEIGHT - 64, 64, 64);
         
         
-        Btn[] btns = {menuBtn, clickBtn, perkBtn};        
-        btnContainer = new BtnContainer(btns, 100, new ImageIcon("assets/perkBtn.png").getImage());//Btn btns[], width, bgimage
+        Btn[] btns = {test1, test2, test3};        
+        menuContainer = new BtnContainer(btns, WIDTH / 2 - 50, 100, 100, null);//Btn btns[], posX, posY, width, bgimage
         
         addMouseListener(clickBtn);
         addMouseListener(menuBtn);
         addMouseListener(perkBtn);
+        for(Btn btn : btns){
+            addMouseListener(btn);
+        }
     }
     
     public void render(){
@@ -107,20 +113,25 @@ public class Game extends Canvas implements Runnable{
         quantity.draw(g);
         menuBtn.draw(g);
         perkBtn.draw(g);
-        
-        btnContainer.draw(g);
+
+        if(GAME_STATE == 1){
+            menuContainer.draw(g);
+        }
         
         //
 	g.dispose();
 	bs.show(); //показать 
    }
     
-    public void update(){        
-        clickBtn.update();
+    public void update(){                
         capacity.update();
         quantity.update();
+        
+        clickBtn.update();
         menuBtn.update();
-        perkBtn.update();       
+        perkBtn.update();  
+        
+        menuContainer.update();
     }
     
     public static void main(String[] args) { 
