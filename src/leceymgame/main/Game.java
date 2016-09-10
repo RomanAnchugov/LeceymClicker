@@ -29,8 +29,12 @@ import leceymgame.gui.Capacity;
 import leceymgame.gui.btns.MenuBtn;
 import leceymgame.gui.btns.PerkBtn;
 import leceymgame.gui.Quantity;
+import leceymgame.gui.btns.ExitBtn;
+import leceymgame.gui.btns.HelpBtn;
+import leceymgame.gui.btns.SaveBtn;
 import leceymgame.services.Btn;
 import static leceymgame.services.GameStats.GAME_STATE;
+import leceymgame.services.Perks;
 
 /**
  *
@@ -81,26 +85,26 @@ public class Game extends Canvas implements Runnable{
         menuBtn = new MenuBtn(Game.WIDTH - 69, Game.HEIGHT - 69, 64, 64, new ImageIcon("assets/menuBtn.png").getImage());//posX, posY, width, height, img
         perkBtn = new PerkBtn(5, Game.HEIGHT - 69, 64, 64, new ImageIcon("assets/perkBtn.png").getImage());//posX, posY, width, height, img        
         
-        Btn test1 = new Btn(5, Game.HEIGHT - 64, 64, 64);//помощ
-        Btn test2 = new Btn(5, Game.HEIGHT - 64, 64, 64);//сохранить
-        Btn test3 = new Btn(5, Game.HEIGHT - 64, 64, 64);//выход
+        HelpBtn helpBtn = new HelpBtn(new ImageIcon("assets/helpBtn.png").getImage());//помощ
+        SaveBtn saveBtn = new SaveBtn(new ImageIcon("assets/saveBtn.png").getImage());//сохранить
+        ExitBtn exitBtn = new ExitBtn(new ImageIcon("assets/exitBtn.png").getImage());//выход        
         
+        Btn[] btns = {helpBtn, saveBtn, exitBtn};        
+        menuContainer = new BtnContainer(btns, WIDTH / 2 - helpBtn.getWidth() / 2, 150, new ImageIcon("assets/containerBg.png").getImage());//Btn btns[], posX, posY, bgimage        
         
-        Btn[] btns = {test1, test2, test3};        
-        menuContainer = new BtnContainer(btns, WIDTH / 2 - 50, 100, null);//Btn btns[], posX, posY, width, bgimage        
-        
-        Btn test4 = new Btn(5, Game.HEIGHT - 64, 64, 64);//перк1б1
-        Btn test5 = new Btn(5, Game.HEIGHT - 64, 64, 64);//перк2б1
-        Btn test6 = new Btn(5, Game.HEIGHT - 64, 64, 64);//перк3б1
-        Btn test7 = new Btn(5, Game.HEIGHT - 64, 64, 64);//перк4б1        
-        Btn[] btnsPerkB1 = {test4, test5, test6, test7};
+        //img, type, cost, upCount, upCost 
+        Perks perk1B1 = new Perks(new ImageIcon("assets/perksBgBtn.png").getImage(), 1, 20, 2, 2);//перк1б1
+        Perks perk2B1 = new Perks(new ImageIcon("assets/perksBgBtn.png").getImage(), 1, 55, 3, 4);//перк2б1
+        Btn test6 = new Perks(new ImageIcon("assets/perksBgBtn.png").getImage(), 1, 20, 2, 2);//перк3б1
+        Btn test7 = new Perks(new ImageIcon("assets/perksBgBtn.png").getImage(), 1, 20, 2, 2);//перк4б1        
+        Btn[] btnsPerkB1 = {perk1B1, perk2B1, test6, test7};
         
         Btn test8 = new Btn(5, Game.HEIGHT - 64, 64, 64);//перк1б2
         Btn test9 = new Btn(5, Game.HEIGHT - 64, 64, 64);//перк2б2
         Btn test10 = new Btn(5, Game.HEIGHT - 64, 64, 64);//перк3б2
         Btn[] btnsPerkB2 = {test8, test9, test10};
         
-        perkContainerB1 = new BtnContainer(btnsPerkB1, WIDTH / 2 - 84, 68, null);
+        perkContainerB1 = new BtnContainer(btnsPerkB1, WIDTH / 2 - perk1B1.getWidth() / 2 - 100, 68, new ImageIcon("assets/containerBg.png").getImage());
         perkContainerB2 = new BtnContainer(btnsPerkB2, WIDTH / 2 - 10, 110, null);
         
         addMouseListener(clickBtn);

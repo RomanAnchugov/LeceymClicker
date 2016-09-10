@@ -30,6 +30,8 @@ public class ClickBtn extends Btn{
         super.click(); 
         if(GameStats.CAPACITY >= GameStats.CLICK_UP + GameStats.QUANTITY){
             GameStats.QUANTITY += GameStats.CLICK_UP;                  
+        }else{
+            GameStats.QUANTITY = GameStats.CAPACITY;
         }
     }                                        
 }

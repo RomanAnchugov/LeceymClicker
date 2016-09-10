@@ -29,7 +29,7 @@ public class BtnContainer implements Renderer{
         this.btns = btns;              
         this.bgImage = bgImage;        
         margin = 10;
-        this.posX = posX;
+        this.posX = posX - margin * 2;
         this.posY = posY;
         int currentY, lastY = posY;
         for (Btn btn : btns) {            
@@ -51,7 +51,7 @@ public class BtnContainer implements Renderer{
     @Override
     public void draw(Graphics g) {                        
         if(bgImage != null){
-            g.drawImage(bgImage, posX, posY, width, height, null);
+            g.drawImage(bgImage, posX + margin, posY, width, height, null);
         }else{
             g.drawRect(posX + margin, posY, width, height);  
         }

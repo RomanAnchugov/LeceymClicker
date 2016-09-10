@@ -27,6 +27,14 @@ private Image img;
         this.posX = posX ;
         this.posY = posY;        
     }
+    public Btn(Image img){
+        this.img = img;
+        this.width = img.getWidth(null);
+        this.height = img.getHeight(null);
+        this.posX = posX ;
+        this.posY = posY;        
+    }
+    
     public Btn(int posX, int posY,int width, int height){
         this.img = null;
         this.width = width;
