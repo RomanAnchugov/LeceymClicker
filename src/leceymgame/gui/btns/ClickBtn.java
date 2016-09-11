@@ -12,7 +12,10 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import leceymgame.services.Btn;
 import leceymgame.main.Game;
+import static leceymgame.services.Children.que;
 import leceymgame.services.GameStats;
+import static leceymgame.services.GameStats.CLICK_UP;
+import static leceymgame.services.GameStats.TIME_UP;
 import leceymgame.services.Renderer;
 
 /**
@@ -29,7 +32,10 @@ public class ClickBtn extends Btn{
     public void click() {
         super.click(); 
         if(GameStats.CAPACITY >= GameStats.CLICK_UP + GameStats.QUANTITY){
-            GameStats.QUANTITY += GameStats.CLICK_UP;                  
+            GameStats.QUANTITY += GameStats.CLICK_UP; 
+            if(que + GameStats.CLICK_UP < 100){
+                    que += CLICK_UP;
+            }
         }else{
             GameStats.QUANTITY = GameStats.CAPACITY;
         }

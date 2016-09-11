@@ -34,13 +34,19 @@ private Image img;
         this.posX = posX ;
         this.posY = posY;        
     }
-    
     public Btn(int posX, int posY,int width, int height){
         this.img = null;
         this.width = width;
         this.height = height;
         this.posX = posX ;
         this.posY = posY;        
+    }
+    public Btn(int width, int height){
+        this.img = null;
+        this.width = width;
+        this.height = height;
+        this.posX = posX ;
+        this.posY = posY;   
     }
 
     @Override
@@ -91,5 +97,14 @@ private Image img;
 
     public int getHeight() {
         return height;
-    }              
+    }       
+
+    public int getPosX() {
+        return posX;
+    }
+
+    public int getPosY() {
+        return posY;
+    }
+    
 }

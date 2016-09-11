@@ -22,6 +22,7 @@ public class ExitBtn extends Btn implements Renderer{
     @Override
     public void click() {
         super.click();
+        System.exit(0);
     }
     
     

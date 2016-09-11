@@ -5,6 +5,8 @@
  */
 package leceymgame.services;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Image;
 import static leceymgame.services.GameStats.*;
 
@@ -17,10 +19,13 @@ public class Perks extends Btn implements Renderer{
     private int type;//1 - click, 2 - time, 3 - вместимость    
     private int cost;//стартовая стоимость
     private int upperCount;//увелечение параметра
-    private double upperCost;//увелечени стоимости        
+    private double upperCost;//увелечени стоимости      
     
-    public Perks(Image img, int type, int startCost, int upperCount, double upperCost) {
-        super(img);
+    private int marginTop = 20;
+    private int marginLeft = 10;
+    
+    public Perks(Image img, int width, int height,int type, int startCost, int upperCount, double upperCost) {
+        super(width, height);
         this.type = type;
         this.cost = startCost;
         this.upperCount = upperCount;
@@ -41,9 +46,28 @@ public class Perks extends Btn implements Renderer{
             if(type == 3){
                 CAPACITY += upperCount;                
             }            
-            cost *= upperCost;            
-            System.out.println(cost);
+            cost *= upperCost;                        
         }        
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        g.setColor(new Color(38, 50, 56));
+        g.fillRect(this.getPosX(), this.getPosY(), this.getWidth(), this.getHeight());
+        g.setColor(new Color(251, 192, 45));        
+        g.drawString("стоит : " + cost, this.getPosX() + marginLeft, this.getPosY() + marginTop);
+        if(type == 1){            
+            g.setColor(new Color(67, 160, 71));        
+            g.drawString("клик + " + upperCount, this.getPosX() + marginLeft, this.getPosY() + marginTop * 2 + 3);
+        }
+        if(type == 2){
+            g.setColor(new Color(3, 155, 229));        
+            g.drawString("время + " + upperCount, this.getPosX() + marginLeft, this.getPosY() + marginTop * 2 + 3);
+        }
+        if(type == 3){
+            g.setColor(new Color(233, 30, 99));        
+            g.drawString("вместимость + " + upperCount, this.getPosX() + marginLeft, this.getPosY() + marginTop * 2 + 3);
+        }   
     }
     
     

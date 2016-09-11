@@ -6,6 +6,7 @@
 package leceymgame.gui;
 
 import com.sun.java.accessibility.util.AWTEventMonitor;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import leceymgame.services.Btn;
@@ -53,7 +54,8 @@ public class BtnContainer implements Renderer{
         if(bgImage != null){
             g.drawImage(bgImage, posX + margin, posY, width, height, null);
         }else{
-            g.drawRect(posX + margin, posY, width, height);  
+            g.setColor(new Color(120, 144, 156));
+            g.fillRect(posX + margin, posY, width, height);  
         }
         for(Btn btn : btns){
             btn.draw(g);

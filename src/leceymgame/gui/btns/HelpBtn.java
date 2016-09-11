@@ -7,6 +7,7 @@ package leceymgame.gui.btns;
 
 import java.awt.Image;
 import leceymgame.services.Btn;
+import leceymgame.services.GameStats;
 import leceymgame.services.Renderer;
 
 /**
@@ -22,6 +23,7 @@ public class HelpBtn extends Btn implements Renderer{
     @Override
     public void click() {
         super.click();
+       GameStats.GAME_STATE = 4;
         
     }
     

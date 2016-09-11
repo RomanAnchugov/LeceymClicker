@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Roman/Documents/NetBeansProjects/LiceymClicker/src/mathgame/gui/BtnContainer.java</file>
-            <file>file:/C:/Users/Roman/Documents/NetBeansProjects/LiceymClicker/src/mathgame/gui/PerkBtn.java</file>
-            <file>file:/C:/Users/Roman/Documents/NetBeansProjects/LiceymClicker/src/mathgame/Btn.java</file>
-            <file>file:/C:/Users/Roman/Documents/NetBeansProjects/LiceymClicker/src/mathgame/Game.java</file>
+            <file>file:/C:/Users/Roman/Documents/NetBeansProjects/LiceymClicker/src/leceymgame/main/Game.java</file>
+            <file>file:/C:/Users/Roman/Documents/NetBeansProjects/LiceymClicker/src/leceymgame/services/TimeUpper.java</file>
+            <file>file:/C:/Users/Roman/Documents/NetBeansProjects/LiceymClicker/src/leceymgame/gui/btns/ClickBtn.java</file>
+            <file>file:/C:/Users/Roman/Documents/NetBeansProjects/LiceymClicker/src/leceymgame/gui/btns/SaveBtn.java</file>
+            <file>file:/C:/Users/Roman/Documents/NetBeansProjects/LiceymClicker/src/leceymgame/services/Children.java</file>
+            <file>file:/C:/Users/Roman/Documents/NetBeansProjects/LiceymClicker/src/leceymgame/services/GameStats.java</file>
         </group>
     </open-files>
 </project-private>
